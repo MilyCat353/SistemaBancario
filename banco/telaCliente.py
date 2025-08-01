@@ -36,6 +36,15 @@ def verificarAcesso():
         else:
             print("Dados incorretos")
 
+def procurarConta(numero):
+    for conta in contas:
+        if numero == conta.numero:
+            return conta 
+
+
+
+
+
 lerArquivo()
 encontrarContaCorrente()
 verificarAcesso()
@@ -67,6 +76,12 @@ if acesso_liberado ==  True:
         elif transacao == 4:
             valor = float(input("Digite o valor do pix: "))
             conta = int(input("Digite o número da conta que vocẽ deseja transferir: "))
+            contaDestino = procurarConta(conta)
+            if contaDestino != None:
+                conta.contaEncontrada.pix(valor,contaDestino)
+                print("Pix realizado com sucesso!")
+            else:
+                print("Não foi possível encontrar o pix")
         else: 
             print("Opção inválida")
         
