@@ -25,7 +25,7 @@ def encontrarContaCorrente():
 
 def verificarAcesso():
     global contaEncontrada
-    global acesso_
+    global acesso_liberado
     if contaEncontrada == None: # verifica se a conta é Nula (inexistente)
         print("Dados incorretos")
     else:
@@ -48,18 +48,25 @@ if acesso_liberado ==  True:
         print("2 -  Saque")
         print("3 -  Deposito")
         print("4 -  Pix")
-        transacao = int(input("Escolha a opção desejadan"))
+        transacao = int(input("Escolha a opção desejadan: "))
         if transacao == 1:
             print("O saldo da conta é: ", contaEncontrada.extrato())
-        else: 
-            print("Opção inválida")
-        if Saque == 2:
+
+        elif transacao == 2:
             valor = float(input("Digite o valor do saque: "))
-            if:
-                contaEncontrada.saque(valor):
+            if contaEncontrada.sacar(valor):
                 print("Sacou com sucesson ainnnnn")
             else:
                 print("Saque recusadonn")
-
+        elif transacao == 3:
+            valor = float(input("Digite o valor do depósito: "))
+            if contaEncontrada.deposito(valor):
+                print(f"Depósito de {valor} efetuado com sucesso!")
+            else:
+                print("Não foi possível realizar o depósito")
+        elif transacao == 4:
+            valor = float(input("Digite o valor do pix: "))
+            conta = int(input("Digite o número da conta que vocẽ deseja transferir: "))
         else: 
             print("Opção inválida")
+        
